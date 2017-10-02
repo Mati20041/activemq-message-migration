@@ -32,6 +32,9 @@ public class Main {
 
                 from("activemq1:"+queueName)
                         .log(body().toString())
+                        .process(exchange -> {
+                            throw new RuntimeException("uh oh");
+                        })
                         .to("activemq2:"+queueName);
             }
         });
