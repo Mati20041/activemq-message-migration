@@ -6,8 +6,13 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Main {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Main.class);
+
     public static void main(String[] args) throws Exception {
         CamelContext camelContext = new DefaultCamelContext();
 
@@ -19,6 +24,11 @@ public class Main {
         String firstBrokerUrl = args[0];
         String secondBrokerUrl = args[1];
         String queueName = args[2];
+
+        LOG.info("first broker: {}" ,firstBrokerUrl);
+        LOG.info("second broker: {}" ,secondBrokerUrl);
+        LOG.info("queue name: {}" ,queueName);
+
         ActiveMQComponent firstBroker = ActiveMQComponent.activeMQComponent(firstBrokerUrl);
         ActiveMQComponent secondBroker = ActiveMQComponent.activeMQComponent(secondBrokerUrl);
 
