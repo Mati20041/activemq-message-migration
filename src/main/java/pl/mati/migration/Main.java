@@ -13,6 +13,7 @@ public class Main {
 
         if (args.length < 3) {
             System.out.println("camel-migraiton <firstBrokerUri> <secondBrokerUri> <queueName>");
+            return;
         }
 
         String firstBrokerUrl = args[0];
